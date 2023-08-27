@@ -4,7 +4,7 @@ require("shiro.remap")
 local augroup = vim.api.nvim_create_augroup
 local ShiroGroup = augroup("Shiro", {})
 
-local autocmd = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
 
 function R(name)
@@ -13,7 +13,7 @@ end
 
 autocmd("TextYankPost", {
     group = yank_group,
-    pattern = "*",
+    pattern = { "*" },
     callback = function()
         vim.highlight.on_yank({
             higroup = "IncSearch",
@@ -24,7 +24,7 @@ autocmd("TextYankPost", {
 
 autocmd({"BufWritePre"}, {
     group = ShiroGroup,
-    pattern = "*",
+    pattern = { "*" },
     command = [[%s/\s\+$//e]],
 })
 
