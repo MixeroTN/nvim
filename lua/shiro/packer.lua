@@ -8,6 +8,13 @@ return require("packer").startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        "folke/which-key.nvim",
+        config = function()
+          require("user.config.whichkey").setup()
+        end,
+    }
+
+    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
