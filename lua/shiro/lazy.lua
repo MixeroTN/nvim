@@ -1,33 +1,41 @@
 -- This file can be loaded by calling `lua require("plugins")` from your init.vim
 
--- Only required if you have packer configured as `opt`
-vim.cmd.packadd('packer.nvim')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+vim.g.mapleader = " "
 
-return require("packer").startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
-    use {
+return require("lazy").setup({
+    {
         "folke/which-key.nvim",
         config = function()
           require("user.config.whichkey").setup()
         end,
-    }
+    },
 
-    use {
+    {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+        dependencies = { {'nvim-lua/plenary.nvim'} }
+    },
 
-    use({
+    ({
         'rose-pine/neovim',
         as = 'rose-pine',
         config = function()
             vim.cmd('colorscheme rose-pine')
-        end
-    })
+        end,
+    }),
 
-    use({
+    ({
         'folke/trouble.nvim',
         config = function()
             require("trouble").setup {
@@ -36,12 +44,12 @@ return require("packer").startup(function(use)
                 -- or leave it empty to use the default settings
                 -- refer to the configuration section below
             }
-        end
-    })
+        end,
+    }),
 
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
+        build = function()
             local ts_update = require(
                 'nvim-treesitter.install'
             )
@@ -49,12 +57,12 @@ return require("packer").startup(function(use)
 
             ts_update()
         end,
-    }
+    },
 
-    use {
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
@@ -72,9 +80,9 @@ return require("packer").startup(function(use)
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
-    }
+    },
 
-    use {
+    {
         'MixeroTN/presence.nvim',
         config = function()
             require("presence").setup({
@@ -102,17 +110,16 @@ return require("packer").startup(function(use)
                 line_number_text    = "Line %s out of %s",        -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
             })
         end,
-    }
+    },
 
-    use("nvim-treesitter/playground")
-    use("nvim-treesitter/nvim-treesitter-context")
-    use("theprimeagen/harpoon")
-    use("theprimeagen/refactoring.nvim")
-    use("mbbill/undotree")
-    use("tpope/vim-fugitive")
+    "nvim-treesitter/playground",
+    "nvim-treesitter/nvim-treesitter-context",
+    "theprimeagen/harpoon",
+    "theprimeagen/refactoring.nvim",
+    "mbbill/undotree",
+    "tpope/vim-fugitive",
 
-    use("folke/zen-mode.nvim")
-    use("eandrju/cellular-automaton.nvim")
-    use("laytan/cloak.nvim")
-
-end)
+    "folke/zen-mode.nvim",
+    "eandrju/cellular-automaton.nvim",
+    "laytan/cloak.nvim",
+})
