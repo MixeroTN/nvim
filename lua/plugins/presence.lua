@@ -1,0 +1,3 @@
+return {
+    'mixerotn/presence.nvim'
+}
