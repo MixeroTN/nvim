@@ -1,7 +1,7 @@
 # My Neovim Config Files
 
 [![Docker](https://img.shields.io/badge/Docker-Test_it-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/mixerotn/nvim)
-[![License](https://img.shields.io/badge/LICENSE-Apache_2.0-brightgreen?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/LICENSE-Apache_2.0-brightgreen?style=for-the-badge)](https://opensource.org/license/apache-2-0)
 
 ## Try with Docker
 
