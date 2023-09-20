@@ -13,7 +13,7 @@ docker run -it mixerotn/nvim
 
 Default lazy.nvim look with extras, additional plugins and also the addons installed with Mason. Using both on Linux and Windows.
 
-### Plugins
+## Plugins
 
 - [wakatime/vim-wakatime](https://github.com/wakatime/vim-wakatime) - Track your coding time with detailed stats on [wakatime.com](https://wakatime.com). I also show these stats on my [GitHub Profile](https://github.com/mixerotn).
 - [mixerotn/presence.nvim](https://github.com/mixerotn/presence.nvim) - My personal fork, more private Discord Rich Presense status when coding.
