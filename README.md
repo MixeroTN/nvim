@@ -9,6 +9,8 @@
 docker run -it mixerotn/nvim
 ```
 
+---
+
 ## About
 
 Default lazy.nvim look with extras, additional plugins and also the addons installed with Mason. Using both on Linux and Windows.
